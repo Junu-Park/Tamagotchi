@@ -15,6 +15,12 @@ protocol ConfigureProtocol {
 
 class BaseViewController: UIViewController, ConfigureProtocol {
 
+    init(title: String) {
+        super.init(nibName: nil, bundle: nil)
+        
+        self.navigationItem.title = title
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,4 +36,9 @@ class BaseViewController: UIViewController, ConfigureProtocol {
     func configureHierarchy() { }
     func configureLayout() { }
     func bind() { }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
