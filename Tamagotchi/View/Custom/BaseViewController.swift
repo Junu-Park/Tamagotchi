@@ -8,9 +8,9 @@
 import UIKit
 
 protocol ConfigureProtocol {
-    func configureView()
     func configureHierarchy()
     func configureLayout()
+    func configureView()
 }
 
 class BaseViewController: UIViewController, ConfigureProtocol {
