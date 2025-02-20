@@ -7,7 +7,13 @@
 
 import UIKit
 
-class BaseViewController: UIViewController {
+protocol ConfigureProtocol {
+    func configureView()
+    func configureHierarchy()
+    func configureLayout()
+}
+
+class BaseViewController: UIViewController, ConfigureProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,7 +22,7 @@ class BaseViewController: UIViewController {
         
         self.configureView()
         self.configureHierarchy()
-        self.configureHierarchy()
+        self.configureLayout()
         self.bind()
     }
     
