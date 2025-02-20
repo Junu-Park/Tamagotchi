@@ -7,12 +7,33 @@
 
 import UIKit
 
-final class SelectCollectionViewCell: UICollectionViewCell {
+import SnapKit
+
+final class SelectCollectionViewCell: UICollectionViewCell, ConfigureProtocol {
+    
     static let id: String = "SelectCollectionViewCell"
+    
+    let tamagoView: TamagotchiView = TamagotchiView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        self.configureView()
+        self.configureHierarchy()
+        self.configureLayout()
     }
+    
+    func configureHierarchy() {
+        self.contentView.addSubview(self.tamagoView)
+    }
+    
+    func configureLayout() {
+        self.tamagoView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
+    
+    func configureView() { }
     
     @available(*, unavailable)
     required init?(coder: NSCoder) {
