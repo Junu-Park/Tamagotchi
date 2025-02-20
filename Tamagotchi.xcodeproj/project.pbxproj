@@ -8,10 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		51F2C3562D6731E500C9375F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 51F2C3552D6731E500C9375F /* SnapKit */; };
+		51F2C3702D67323500C9375F /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 51F2C36F2D67323500C9375F /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		51F2C3062D67185100C9375F /* Tamagotchi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tamagotchi.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		51F2C36F2D67323500C9375F /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -50,6 +52,7 @@
 		51F2C2FD2D67185100C9375F = {
 			isa = PBXGroup;
 			children = (
+				51F2C36F2D67323500C9375F /* .gitignore */,
 				51F2C3082D67185100C9375F /* Tamagotchi */,
 				51F2C3072D67185100C9375F /* Products */,
 			);
@@ -131,6 +134,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51F2C3702D67323500C9375F /* .gitignore in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
