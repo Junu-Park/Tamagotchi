@@ -34,15 +34,15 @@ final class SelectViewController: BaseViewController {
     }
     
     override func bind() {
-        // TODO: 실 데이터 적용
-        Observable.just(Array(1...20))
+        Observable.just(Mock.tamagoList)
             .bind(to: self.collectionView.rx.items(cellIdentifier: SelectCollectionViewCell.id, cellType: SelectCollectionViewCell.self)) { item, data, cell in
-                
+                cell.tamagoView.tamagoName.text = data.name
+                cell.tamagoView.tamagoImage.image = UIImage(named: data.imageString)
             }
             .disposed(by: self.disposeBag)
         
         // TODO: Alert 띄우기 기능
-        self.collectionView.rx.modelSelected(Int.self)
+        self.collectionView.rx.modelSelected(TamagoType.self)
             .bind { value in
                 print(value)
             }
