@@ -1,5 +1,5 @@
 //
-//  TamagotchiView.swift
+//  TamagoView.swift
 //  Tamagotchi
 //
 //  Created by 박준우 on 2/21/25.
@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-final class TamagotchiView: UIView, ConfigureProtocol {
+final class TamagoView: UIView, ConfigureProtocol {
     
     let tamagoImage: UIImageView = UIImageView(image: .no)
     let tamagoName: InsetLabel = InsetLabel(inset: 4)
@@ -41,7 +41,7 @@ final class TamagotchiView: UIView, ConfigureProtocol {
         self.tamagoName.snp.makeConstraints { make in
             make.top.equalTo(self.tamagoImage.snp.bottom).offset(4)
             make.centerX.equalToSuperview()
-            make.horizontalEdges.lessThanOrEqualToSuperview()
+            make.width.lessThanOrEqualToSuperview()
         }
     }
     

@@ -13,7 +13,7 @@ final class SelectCollectionViewCell: UICollectionViewCell, ConfigureProtocol {
     
     static let id: String = "SelectCollectionViewCell"
     
-    let tamagoView: TamagotchiView = TamagotchiView()
+    let tamagoView: TamagoView = TamagoView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
