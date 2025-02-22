@@ -15,10 +15,12 @@ protocol ConfigureProtocol {
 
 class BaseViewController: UIViewController, ConfigureProtocol {
 
-    init(title: String) {
+    init(title: String? = nil) {
         super.init(nibName: nil, bundle: nil)
         
-        self.navigationItem.title = title
+        if let title {
+            self.navigationItem.title = title
+        }
     }
     
     override func viewDidLoad() {
