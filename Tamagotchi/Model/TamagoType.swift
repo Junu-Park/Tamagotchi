@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum TamagoType {
+enum TamagoType: Comparable {
     case tingling(level: Int = 1)
     case smiling(level: Int = 1)
     case twinkling(level: Int = 1)
