@@ -37,18 +37,21 @@ final class TamagoView: BaseView {
     }
     
     override func configureLayout() {
-        self.tamagoImage.setContentHuggingPriority(.defaultLow, for: .vertical)
         self.tamagoName.setContentHuggingPriority(.defaultHigh, for: .vertical)
+        self.tamagoImage.setContentHuggingPriority(.defaultLow, for: .vertical)
         
-        self.tamagoImage.snp.makeConstraints { make in
-            make.top.horizontalEdges.equalToSuperview()
-            make.width.equalTo(self.tamagoImage.snp.height)
-        }
+        // TODO: 아래 두 구문의 순서를 바꾸면 결과가 달라짐
         self.tamagoName.snp.makeConstraints { make in
-            make.top.equalTo(self.tamagoImage.snp.bottom).offset(4)
-            make.centerX.equalToSuperview()
+            make.centerX.bottom.equalToSuperview()
             make.width.lessThanOrEqualToSuperview()
         }
+        
+        self.tamagoImage.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(self.tamagoName.snp.top).offset(-4)
+        }
+        
     }
     
     override func configureView() {
