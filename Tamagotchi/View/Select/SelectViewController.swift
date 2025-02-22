@@ -36,7 +36,7 @@ final class SelectViewController: BaseViewController {
     override func bind() {
         Observable.just(Mock.tamagoList)
             .bind(to: self.collectionView.rx.items(cellIdentifier: SelectCollectionViewCell.id, cellType: SelectCollectionViewCell.self)) { item, data, cell in
-                cell.tamagoView.type = data
+                cell.tamagoView.tamagoType = data
             }
             .disposed(by: self.disposeBag)
         
