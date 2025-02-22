@@ -9,28 +9,34 @@ import UIKit
 
 import SnapKit
 
-final class TamagoView: UIView, ConfigureProtocol {
+final class TamagoView: BaseView {
     
-    let tamagoImage: UIImageView = UIImageView(image: .no)
-    let tamagoName: InsetLabel = InsetLabel(inset: 4)
+    private let tamagoImage: UIImageView = UIImageView(image: .no)
+    private let tamagoName: InsetLabel = InsetLabel(inset: 4)
     
-    init(image: UIImage = .no, name: String = "준비중이에요") {
-        super.init(frame: .zero)
+    var type: TamagoType {
+        didSet {
+            self.tamagoName.text = type.name
+            self.tamagoImage.image = UIImage(named: type.imageString)
+        }
+    }
+    
+    init(type: TamagoType) {
+        self.type = type
         
-        self.tamagoImage.image = image
-        self.tamagoName.text = name
+        super.init()
         
         self.configureHierarchy()
         self.configureLayout()
         self.configureView()
     }
     
-    func configureHierarchy() {
+    override func configureHierarchy() {
         self.addSubview(self.tamagoImage)
         self.addSubview(self.tamagoName)
     }
     
-    func configureLayout() {
+    override func configureLayout() {
         self.tamagoImage.setContentHuggingPriority(.defaultLow, for: .vertical)
         self.tamagoName.setContentHuggingPriority(.defaultHigh, for: .vertical)
         
@@ -45,7 +51,7 @@ final class TamagoView: UIView, ConfigureProtocol {
         }
     }
     
-    func configureView() {
+    override func configureView() {
         self.tamagoImage.contentMode = .scaleAspectFit
         self.tamagoImage.clipsToBounds = true
         DispatchQueue.main.async {
@@ -58,10 +64,5 @@ final class TamagoView: UIView, ConfigureProtocol {
         self.tamagoName.layer.borderWidth = 1
         self.tamagoName.backgroundColor = .background
         self.tamagoName.textAlignment = .center
-    }
-    
-    @available(*, unavailable)
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }
