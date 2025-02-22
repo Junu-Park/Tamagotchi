@@ -38,4 +38,32 @@ enum TamagoType {
             return "noImage"
         }
     }
+    
+    var description: String {
+        switch self {
+        case .tingling:
+            return
+"""
+저는 따끔따끔 다마고치입니다.
+Github에 잔디를 매일 안 박으시면
+인생이 따끔하실 겁니다.
+"""
+        case .smiling:
+            return
+"""
+저는 방긋방긋 다마고치입니다.
+Github에 잔디를 매일 박으셔야
+웃으실 자격이 있습니다.
+"""
+        case .twinkling:
+            return
+"""
+저는 반짝반짝 다마고치입니다.
+Github에 잔디를 매일 박으시면
+반짝반짝 빛날거예요
+"""
+        case .none:
+            return "준비중이에요"
+        }
+    }
 }
