@@ -14,17 +14,18 @@ final class TamagoView: BaseView {
     private let tamagoImage: UIImageView = UIImageView(image: .no)
     private let tamagoName: InsetLabel = InsetLabel(inset: 4)
     
-    var type: TamagoType {
+    var tamagoType: TamagoType = .none {
         didSet {
-            self.tamagoName.text = type.name
-            self.tamagoImage.image = UIImage(named: type.imageString)
+            self.tamagoName.text = tamagoType.name
+            self.tamagoImage.image = UIImage(named: tamagoType.imageString)
         }
     }
     
-    init(type: TamagoType) {
-        self.type = type
+    init(tamagoType: TamagoType = .none) {
         
         super.init()
+        
+        self.tamagoType = tamagoType
         
         self.configureHierarchy()
         self.configureLayout()
