@@ -26,8 +26,8 @@ enum TamagoType: Codable {
         }
     }
     
-    var imageString: String {
-        var level = UserDataManager.isOnboarding.value ? 6 : UserDataManager.level
+    func getImageString(isSelectView: Bool = false) -> String {
+        var level = isSelectView ? 6 : UserDataManager.level
         if level == 10 {
             level = 9
         }

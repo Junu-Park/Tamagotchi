@@ -11,7 +11,7 @@ import SnapKit
 
 final class SelectAlertView: BaseView {
     
-    private lazy var tamagoView: TamagoView = TamagoView(tamagoType: self.tamagoType)
+    private lazy var tamagoView: TamagoView = TamagoView(tamagoType: self.tamagoType, isSelectView: true)
     private let seperator: UIView = UIView()
     private let tamagoDescription: UILabel = UILabel()
     private lazy var buttonStackView: UIStackView = UIStackView(arrangedSubviews: [self.cancelButton, self.startButton])
@@ -67,6 +67,10 @@ final class SelectAlertView: BaseView {
         self.cancelButton.setTitle("취소", for: [])
         self.cancelButton.backgroundColor = .lightGray.withAlphaComponent(0.2)
         
-        self.startButton.setTitle("시작하기", for: [])
+        if UserDataManager.isOnboarding.value {
+            self.startButton.setTitle("시작하기", for: [])
+        } else {
+            self.startButton.setTitle("변경하기", for: [])
+        }
     }
 }

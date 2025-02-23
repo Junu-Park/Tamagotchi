@@ -20,6 +20,8 @@ final class SelectAlertViewController: BaseViewController {
         super.init()
     }
     
+    var closure: (() -> ())?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -72,13 +74,18 @@ final class SelectAlertViewController: BaseViewController {
     
     @objc private func transitionMainView() {
         UserDataManager.tamago.value = self.tamagoType
-        UserDataManager.isOnboarding.value = false
         
-        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene, let window = windowScene.windows.first else { return }
-        // TODO: 실 데이터 적용
-        let vc = MainViewController()
-        window.rootViewController = UINavigationController(rootViewController: vc)
-        window.makeKeyAndVisible()
+        if UserDataManager.isOnboarding.value {
+            UserDataManager.isOnboarding.value = false
+            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene, let window = windowScene.windows.first else { return }
+            // TODO: 실 데이터 적용
+            let vc = MainViewController()
+            window.rootViewController = UINavigationController(rootViewController: vc)
+            window.makeKeyAndVisible()
+        } else {
+            self.dismiss(animated: false)
+            self.closure?()
+        }
     }
 }
 

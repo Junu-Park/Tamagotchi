@@ -17,11 +17,14 @@ final class TamagoView: BaseView {
     lazy var tamagoType: TamagoType = .none {
         didSet {
             self.tamagoName.text = tamagoType.name
-            self.tamagoImage.image = UIImage(named: tamagoType.imageString)
+            self.tamagoImage.image = UIImage(named: tamagoType.getImageString(isSelectView: self.isSelectView))
         }
     }
     
-    init(tamagoType: TamagoType = .none) {
+    var isSelectView: Bool
+    
+    init(tamagoType: TamagoType = .none, isSelectView: Bool = false) {
+        self.isSelectView = isSelectView
         
         super.init()
         

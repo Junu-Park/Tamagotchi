@@ -38,7 +38,11 @@ final class SelectViewController: BaseViewController {
     }
     
     override func configureView() {
-        self.navigationItem.title = "다마고치 선택하기"
+        if UserDataManager.isOnboarding.value {
+            self.navigationItem.title = "다마고치 선택하기"
+        } else {
+            self.navigationItem.title = "다마고치 변경하기"
+        }
     }
     
     override func bind() {
@@ -52,6 +56,9 @@ final class SelectViewController: BaseViewController {
             .bind(with: self, onNext: { owner, value in
                 if value != .none {
                     let vc = SelectAlertViewController(tamagoType: value)
+                    vc.closure = {
+                        self.navigationController?.popViewController(animated: true)
+                    }
                     // TODO: overCurrentContext vs overFullScreen
                     vc.modalPresentationStyle = .overCurrentContext
                     owner.present(vc, animated: false)
