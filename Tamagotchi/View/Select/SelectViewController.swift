@@ -40,10 +40,13 @@ final class SelectViewController: BaseViewController {
             }
             .disposed(by: self.disposeBag)
         
-        // TODO: Alert 띄우기 기능
         self.collectionView.rx.modelSelected(TamagoType.self)
             .bind { value in
-                print(value)
+                if value != .none {
+                    let vc = SelectAlertViewController(tamagoType: value)
+                    vc.modalPresentationStyle = .overFullScreen
+                    self.present(vc, animated: false)
+                }
             }
             .disposed(by: self.disposeBag)
     }
