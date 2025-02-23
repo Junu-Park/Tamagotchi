@@ -9,8 +9,8 @@ import Foundation
 
 struct Mock {
     static var tamagoList: [TamagoType] = [
-        TamagoType.tingling(level: 6),
-        TamagoType.smiling(level: 6),
-        TamagoType.twinkling(level: 6),
+        TamagoType.tingling,
+        TamagoType.smiling,
+        TamagoType.twinkling,
     ] + Array(repeating: TamagoType.none, count: 20)
 }

@@ -7,10 +7,10 @@
 
 import Foundation
 
-enum TamagoType: Comparable {
-    case tingling(level: Int = 1)
-    case smiling(level: Int = 1)
-    case twinkling(level: Int = 1)
+enum TamagoType {
+    case tingling
+    case smiling
+    case twinkling
     case none
     
     var name: String {
@@ -27,12 +27,17 @@ enum TamagoType: Comparable {
     }
     
     var imageString: String {
+        var level = UserDataManager.isOnboarding.value ? 6 : UserDataManager.level
+        if level == 10 {
+            level = 9
+        }
+        
         switch self {
-        case .tingling(let level):
+        case .tingling:
             return "1-\(level)"
-        case .smiling(let level):
+        case .smiling:
             return "2-\(level)"
-        case .twinkling(let level):
+        case .twinkling:
             return "3-\(level)"
         case .none:
             return "noImage"
