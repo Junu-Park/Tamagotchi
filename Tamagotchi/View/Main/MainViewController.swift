@@ -58,6 +58,8 @@ final class MainViewController: BaseViewController {
     }
     
     override func configureView() {
+        self.navigationItem.backButtonDisplayMode = .minimal
+        
         let name = UserDataManager.name.value
         self.navigationItem.title = "\(name)님의 다마고치"
         
@@ -74,9 +76,8 @@ final class MainViewController: BaseViewController {
         self.infoLabel.textAlignment = .center
     }
     
-    // TODO: 화면 전환 로직 추가
     @objc private func transitionProfile() {
-        
+        self.navigationController?.pushViewController(SettingViewController(), animated: true)
     }
     
     // TODO: MVVM 패턴 적용
