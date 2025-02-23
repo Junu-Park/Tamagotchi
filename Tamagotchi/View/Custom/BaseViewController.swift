@@ -15,12 +15,8 @@ protocol ConfigureProtocol {
 
 class BaseViewController: UIViewController, ConfigureProtocol {
 
-    init(title: String? = nil) {
+    init() {
         super.init(nibName: nil, bundle: nil)
-        
-        if let title {
-            self.navigationItem.title = title
-        }
     }
     
     override func viewDidLoad() {

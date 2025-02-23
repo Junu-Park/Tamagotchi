@@ -37,6 +37,10 @@ final class SelectViewController: BaseViewController {
         }
     }
     
+    override func configureView() {
+        self.navigationItem.title = "다마고치 선택하기"
+    }
+    
     override func bind() {
         Observable.just(Mock.tamagoList)
             .bind(to: self.collectionView.rx.items(cellIdentifier: SelectCollectionViewCell.id, cellType: SelectCollectionViewCell.self)) { item, data, cell in

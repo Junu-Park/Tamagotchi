@@ -74,7 +74,7 @@ final class SelectAlertViewController: BaseViewController {
     @objc private func transitionMainView() {
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene, let window = windowScene.windows.first else { return }
         // TODO: 실 데이터 적용
-        let vc = MainViewController(title: "\("대장")님의 다마고치")
+        let vc = MainViewController()
         window.rootViewController = UINavigationController(rootViewController: vc)
         window.makeKeyAndVisible()
     }

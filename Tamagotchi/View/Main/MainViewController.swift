@@ -13,4 +13,9 @@ final class MainViewController: BaseViewController {
         super.viewDidLoad()
         
     }
+    
+    override func configureView() {
+        let name = UserDataManager.name.value
+        self.navigationItem.title = "\(name)님의 다마고치"
+    }
 }
