@@ -70,8 +70,10 @@ final class SelectAlertViewController: BaseViewController {
         self.dismiss(animated: false)
     }
     
-    // TODO: SelectViewController deinit 호출 안 되는 오류
     @objc private func transitionMainView() {
+        UserDataManager.tamago.value = self.tamagoType
+        UserDataManager.isOnboarding.value = false
+        
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene, let window = windowScene.windows.first else { return }
         // TODO: 실 데이터 적용
         let vc = MainViewController()
