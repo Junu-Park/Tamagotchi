@@ -14,7 +14,7 @@ final class TamagoView: BaseView {
     private let tamagoImage: UIImageView = UIImageView(image: .no)
     private let tamagoName: InsetLabel = InsetLabel(inset: 4)
     
-    var tamagoType: TamagoType = .none {
+    lazy var tamagoType: TamagoType = .none {
         didSet {
             self.tamagoName.text = tamagoType.name
             self.tamagoImage.image = UIImage(named: tamagoType.imageString)
