@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum TamagoType {
+enum TamagoType: Codable {
     case tingling
     case smiling
     case twinkling
