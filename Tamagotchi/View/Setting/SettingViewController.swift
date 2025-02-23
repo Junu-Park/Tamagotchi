@@ -21,6 +21,10 @@ final class SettingViewController: BaseViewController {
         super.viewDidLoad()
     }
     
+    deinit {
+        print(self)
+    }
+    
     override func configureHierarchy() {
         self.view.addSubview(self.tableView)
     }
@@ -50,5 +54,35 @@ final class SettingViewController: BaseViewController {
                 cell.detailTextLabel?.text = data.detail
             })
             .disposed(by: self.disposeBag)
+        
+        self.tableView.rx.modelSelected(SettingTableViewCellType.self)
+            .bind(with: self) { owner, value in
+                if value == .name {
+                    owner.navigationController?.pushViewController(SetNameViewController(), animated: true)
+                } else if value == .tamago {
+                    owner.navigationController?.pushViewController(SelectViewController(), animated: true)
+                } else if value == .reset {
+                    owner.resetAlert()
+                }
+            }
+            .disposed(by: self.disposeBag)
+    }
+}
+
+extension SettingViewController {
+    func resetAlert() {
+        let ac = UIAlertController(title: "데이터 초기화", message: "정말 처음부터 시작하실건가용?", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "아냐!", style: .cancel)
+        let confirm = UIAlertAction(title: "웅", style: .default) { _ in
+            UserDataManager.resetData()
+            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene, let window = windowScene.windows.first else { return }
+            let vc = SelectViewController()
+            window.rootViewController = UINavigationController(rootViewController: vc)
+            window.makeKeyAndVisible()
+        }
+        ac.addAction(cancel)
+        ac.addAction(confirm)
+        
+        self.present(ac, animated: true)
     }
 }
