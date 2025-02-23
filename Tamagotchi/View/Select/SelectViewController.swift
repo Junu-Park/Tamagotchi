@@ -21,6 +21,10 @@ final class SelectViewController: BaseViewController {
         super.viewDidLoad()
     }
     
+    deinit {
+        print(self)
+    }
+    
     override func configureHierarchy() {
         self.view.addSubview(self.collectionView)
     }
@@ -41,13 +45,13 @@ final class SelectViewController: BaseViewController {
             .disposed(by: self.disposeBag)
         
         self.collectionView.rx.modelSelected(TamagoType.self)
-            .bind { value in
+            .bind(with: self, onNext: { owner, value in
                 if value != .none {
                     let vc = SelectAlertViewController(tamagoType: value)
                     vc.modalPresentationStyle = .overFullScreen
-                    self.present(vc, animated: false)
+                    owner.present(vc, animated: false)
                 }
-            }
+            })
             .disposed(by: self.disposeBag)
     }
 }
