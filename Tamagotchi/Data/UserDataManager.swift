@@ -39,10 +39,14 @@ struct UserDefaultManager<T: Codable> {
             }
         }
     }
+    
+    static func reset(key: String) {
+        UserDefaults.standard.removeObject(forKey: key)
+    }
 }
 
 enum UserDataManager {
-    enum Key: String {
+    enum Key: String, CaseIterable {
         case isOnboarding
         case tamago
         case name
@@ -66,6 +70,12 @@ enum UserDataManager {
             return 10
         default:
             return 1
+        }
+    }
+    
+    static func resetData() {
+        Key.allCases.forEach { key in
+            UserDefaultManager<String>.reset(key: key.rawValue)
         }
     }
 }
