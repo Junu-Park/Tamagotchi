@@ -50,7 +50,7 @@ final class TamagoView: BaseView {
         self.tamagoImage.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.centerX.equalToSuperview()
-            make.bottom.equalTo(self.tamagoName.snp.top).offset(-4)
+            make.bottom.equalTo(self.tamagoName.snp.top).offset(-8)
         }
         
     }
