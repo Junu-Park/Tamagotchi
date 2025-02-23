@@ -48,7 +48,8 @@ final class SelectViewController: BaseViewController {
             .bind(with: self, onNext: { owner, value in
                 if value != .none {
                     let vc = SelectAlertViewController(tamagoType: value)
-                    vc.modalPresentationStyle = .overFullScreen
+                    // TODO: overCurrentContext vs overFullScreen
+                    vc.modalPresentationStyle = .overCurrentContext
                     owner.present(vc, animated: false)
                 }
             })
