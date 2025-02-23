@@ -57,7 +57,7 @@ final class SelectViewController: BaseViewController {
                 if value != .none {
                     let vc = SelectAlertViewController(tamagoType: value)
                     vc.closure = {
-                        self.navigationController?.popViewController(animated: true)
+                        self.navigationController?.popToRootViewController(animated: true)
                     }
                     // TODO: overCurrentContext vs overFullScreen
                     vc.modalPresentationStyle = .overCurrentContext
