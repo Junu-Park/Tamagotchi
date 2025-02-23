@@ -17,5 +17,10 @@ final class MainViewController: BaseViewController {
     override func configureView() {
         let name = UserDataManager.name.value
         self.navigationItem.title = "\(name)님의 다마고치"
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = .background
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.font]
+        self.navigationItem.scrollEdgeAppearance = appearance
     }
 }
