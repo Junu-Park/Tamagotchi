@@ -8,19 +8,22 @@
 import UIKit
 
 extension UIImage {
-    var eatFood: UIImage {
+    static var profile: UIImage {
+        return UIImage(systemName: "person.circle")!
+    }
+    static var eatFood: UIImage {
         return UIImage(systemName: "leaf.circle")!
     }
-    var drinkWater: UIImage {
+    static var drinkWater: UIImage {
         return UIImage(systemName: "drop.circle")!
     }
-    var setName: UIImage {
+    static var setName: UIImage {
         return UIImage(systemName: "pencil")!
     }
-    var changeTamago: UIImage {
+    static var changeTamago: UIImage {
         return UIImage(systemName: "moon.fill")!
     }
-    var resetData: UIImage {
+    static var resetData: UIImage {
         return UIImage(systemName: "arrow.clockwise")!
     }
 }
