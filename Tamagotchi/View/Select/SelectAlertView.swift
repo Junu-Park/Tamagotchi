@@ -15,8 +15,8 @@ final class SelectAlertView: BaseView {
     private let seperator: UIView = UIView()
     private let tamagoDescription: UILabel = UILabel()
     private lazy var buttonStackView: UIStackView = UIStackView(arrangedSubviews: [self.cancelButton, self.startButton])
-    private let cancelButton: UIButton = UIButton()
-    private let startButton: UIButton = UIButton()
+    let cancelButton: UIButton = UIButton()
+    let startButton: UIButton = UIButton()
     
     private var tamagoType: TamagoType
     
